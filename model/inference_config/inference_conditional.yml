@@ -1,0 +1,24 @@
+MODEL:
+  model_directory: '../model/baseline'
+  memory_length: 4146
+  checkpoint_name: 'checkpoint_last.pt'
+  debug: True
+SAMPLING:
+  technique: 'topk'
+  threshold: 32.0
+  temperature: 0.95
+INPUT:
+  time_extension: True
+  conditional_input_melody: 'prefix_test.npy'
+  num_conditional_tokens: 50
+  exclude_bos_token: True
+  num_midi_files: 1
+  num_empty_tokens_to_ignore: 0
+  conditional_duration: 22
+OUTPUT:
+  output_txt_directory: 'output_condition'
+GENERATION:
+  generation_length: 4096
+  generation_duration: 120
+  duration_based: False
+

@@ -1,0 +1,75 @@
+EVALUATE:
+  batch_size: 1
+  mem_length: 2048
+  tgt_length: 128
+INITIALIZER:
+  base_init: ['normal', 0.01]
+  embed_init: ['normal', 0.01]
+MODEL:
+  attention_dropout: 0.1
+  dropout: 0.1
+  inner_size: 1000
+  num_heads: 10
+  num_layers: 6
+  pre_lnorm: False
+  tie_embedding: True
+  tie_proj: False
+  units: 500
+TRAIN:
+  load_from_previous: "./baseline/checkpoint_best.pt"
+  use_mle: True
+  batch_chunk: 16
+  batch_size: 512
+  clip: 1.0
+  decay_rate: 0.5
+  eval_interval: 1000
+  log_interval: 100
+  lr: 0.002
+  lr_min: 0.0001
+  max_step: 100000
+  optim: adam
+  patience: 10
+  scheduler: inv_sqrt
+  seed: 1111
+  tgt_length: 128
+  mem_length: 1024
+  warmup_step: 4000
+  pad_type: 'model'
+  random_crop: False
+  replace_start_with_pad: False
+DATASET:
+  event_type: 'magenta'
+  trim_padding: True
+DISCRIMINATOR:
+  freeze_discriminator: False
+  type: "bert"
+  batch_chunk: 16
+  start_iter: 100
+  dis_loss_freq: 5
+  gen_loss_freq: 5
+  tgt_len: 128
+  mem_len: 128
+  beta_max: 100.0
+  dis_steps: 1
+  gen_loss_factor: 1
+  dis_loss_factor: 1
+  sample_chunks_mem: 2
+  context_len: 5
+  adapt: 'exp'
+  gen_lr: 0.002
+  gen_lr_min: 0.0001
+  gen_patience: 10
+  gen_scheduler: inv_sqrt
+  gen_warmup_step: 1000
+  gen_decay_rate: 0.5
+  dis_lr: 0.002
+  dis_lr_min: 0.0001
+  dis_warmup_step: 1000
+  dis_patience: 10
+  dis_scheduler: inv_sqrt
+  dis_decay_rate: 0.5
+  BERT:
+    model_path: "../BERT/checkpoint-1969000"
+    model_type: "bert_lm"
+    freeze_layers: ['0', '1', '2', '3', '4']
+    loss_type: 'wgan-gp'

@@ -1,0 +1,44 @@
+EVALUATE:
+  batch_size: 10
+  mem_length: 128
+  tgt_length: 128
+INITIALIZER:
+  base_init: ['normal', 0.01]
+  embed_init: ['normal', 0.01]
+MODEL:
+  attention_dropout: 0.1
+  dropout: 0.1
+  inner_size: 1000
+  num_heads: 10
+  num_layers: 6
+  pre_lnorm: False
+  tie_embedding: True
+  tie_proj: False
+  units: 500
+TRAIN:
+  load_from_previous: "./baseline/checkpoint_best.pt"
+  batch_chunk: 4
+  batch_size: 256
+  clip: 1.0
+  decay_rate: 0.5
+  eval_interval: 1000
+  log_interval: 100
+  lr: 0.001
+  lr_min: 0.0001
+  max_step: 100000
+  mem_length: 128
+  optim: adam
+  patience: 10
+  scheduler: inv_sqrt
+  seed: 1111
+  tgt_length: 512
+  warmup_step: 4000
+DATASET:
+  event_type: 'magenta'
+  trim_padding: True
+DISCRIMINATOR:
+  freeze_discriminator: False
+  type: "cnn"
+  start_iter: 0
+  gen_loss_factor: 1000
+  dis_loss_factor: 1

@@ -1,0 +1,45 @@
+EVALUATE:
+  batch_size: 10
+  mem_length: 2048
+  tgt_length: 128
+INITIALIZER:
+  base_init: ['normal', 0.01]
+  embed_init: ['normal', 0.01]
+MODEL:
+  attention_dropout: 0.1
+  dropout: 0.1
+  inner_size: 1000
+  num_heads: 10
+  num_layers: 6
+  pre_lnorm: False
+  tie_embedding: True
+  tie_proj: False
+  units: 500
+TRAIN:
+  batch_chunk: 4
+  batch_size: 512
+  clip: 1.0
+  decay_rate: 0.5
+  eval_interval: 1000
+  log_interval: 100
+  lr: 0.004
+  lr_min: 0.0001
+  max_step: 100000
+  mem_length: 1024
+  optim: adam
+  patience: 10
+  scheduler: inv_sqrt
+  seed: 1111
+  tgt_length: 128
+  warmup_step: 4000
+  random_crop: False
+  replace_start_with_pad: False
+  pad_type: "model"
+DATASET:
+  event_type: 'magenta'
+  trim_padding: True
+DISCRIMINATOR:
+  freeze_discriminator: False
+  type: "Null"
+  start_iter: 200000
+  truncate_backprop: True

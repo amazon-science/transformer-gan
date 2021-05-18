@@ -1,3 +1,7 @@
+This LICENSE file applies to the code in this `model/` subdirectory.
+Codes in this `model/` directory is lightly modified except utils/bleu.py, utils/classifier.py, batch_generate.py, generate.py, discriminator.py, train.py, transformer_gan.py from https://github.com/chrisdonahue/LakhNES/tree/master/model.
+# Modifications Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
 
                                  Apache License
                            Version 2.0, January 2004
